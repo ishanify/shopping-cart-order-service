@@ -11,16 +11,27 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.shopping.Client.ProductServiceClient;
 import com.example.shopping.Model.Cart;
 import com.example.shopping.Model.CartItemRequest;
 import com.example.shopping.Model.CartProductStatus;
+import com.example.shopping.Model.Product;
 import com.example.shopping.Repository.CartRepository;
 
 @Service
 public class CartService {
 	
-	@Autowired
+	
 	private CartRepository cartRepository;
+	
+	private ProductServiceClient productServiceClient;
+
+	
+	public CartService(CartRepository cartRepository, ProductServiceClient productServiceClient) {
+		super();
+		this.cartRepository = cartRepository;
+		this.productServiceClient = productServiceClient;
+	}
 
 	public List<Cart> getCart(Long userId) {
 		
@@ -37,6 +48,9 @@ public class CartService {
 		//check if product is not duplicate in cart
 		
 		cartRepository.updateCartProductStatusbyUserId(userId, CartProductStatus.INACTIVE);
+		
+		//create another API in product service to validate the productId and quantity added to cart
+		Product p = productServiceClient.getProduct(2);
 		
 		List<Cart> cartList = new ArrayList<Cart>();
 		
