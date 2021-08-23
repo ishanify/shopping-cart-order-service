@@ -1,0 +1,8 @@
+CREATE TABLE ORDER_ITEMS(
+id BIGINT NOT NULL,
+order_id BIGINT NOT NULL,
+product_id INT NOT NULL,
+quantity INT NOT NULL,
+PRIMARY KEY(id)
+
+);	
