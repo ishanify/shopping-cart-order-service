@@ -6,4 +6,4 @@ INSERT INTO CART (id, user_id, product_id, quantity, cart_product_status) VALUES
 
 
 
-INSERT INTO ORDERS (id, user_id, amount, payment_status, created_date) VALUES (1, 200, 90, 4, 'SUCCESS', '2021-08-21');
+INSERT INTO ORDERS (id, user_id, amount, payment_status, created_date) VALUES (1, 200, 90, 'SUCCESS', '2021-08-21');

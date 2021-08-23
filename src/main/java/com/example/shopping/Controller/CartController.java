@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.shopping.Model.Cart;
+import com.example.shopping.Model.CartItemRequest;
 import com.example.shopping.Model.Request.CreateCartRequest;
 import com.example.shopping.Model.Request.UpdateCartRequest;
 import com.example.shopping.Service.CartService;
@@ -33,7 +34,7 @@ public class CartController {
 	}
 	
 	@PostMapping(path = "/cart", headers = {USERID_HEADER} )
-	public void createCcart(@RequestHeader(USERID_HEADER) Long userId, @RequestBody CreateCartRequest createCartRequest) {
+	public void createCcart(@RequestHeader(USERID_HEADER) Long userId, @RequestBody List<CartItemRequest> createCartRequest) {
 		// Create entries in the Cart based on user ID header and the request body
 		
 		cartService.createCart(userId, createCartRequest);
@@ -41,7 +42,7 @@ public class CartController {
 	}
 	
 	@PatchMapping(path = "/cart", headers = {USERID_HEADER} )
-	public void updateCcart(@RequestHeader(USERID_HEADER) Long userId, @RequestBody UpdateCartRequest updateCartRequest) {
+	public void updateCcart(@RequestHeader(USERID_HEADER) Long userId, @RequestBody List<CartItemRequest> updateCartRequest) {
 		
 		cartService.updateCart(userId, updateCartRequest);
 	}
