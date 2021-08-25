@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.shopping.Model.Cart;
 import com.example.shopping.Model.Order;
 import com.example.shopping.Model.Request.CreateOrderRequest;
+import com.example.shopping.Model.Respone.OrderDetailsResponse;
 import com.example.shopping.Service.OrderService;
 
 @RestController
@@ -38,7 +39,7 @@ public class OrderController {
 	}
 	
 	@PostMapping(path = "/order", headers = {USERID_HEADER} )
-	public Order createOorder(@RequestHeader(USERID_HEADER) Long userId, @RequestBody CreateOrderRequest createOrderRequest) {
+	public OrderDetailsResponse createOorder(@RequestHeader(USERID_HEADER) Long userId, @RequestBody CreateOrderRequest createOrderRequest) {
 		// Create new order and return the order confirmation details.
 		
 		return orderService.createOrder(userId,createOrderRequest);

@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Entity
+@Builder
 @Table(name="ORDER_ITEMS")
 public class OrderItems {
 
@@ -25,5 +27,6 @@ public class OrderItems {
 	private Long orderId;
 	private Integer productId;
 	private Integer quantity;
+	private BigDecimal productAmount;
 
 }

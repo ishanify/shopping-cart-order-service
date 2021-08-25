@@ -18,4 +18,8 @@ public interface CartRepository extends CrudRepository<Cart, Long>{
 	@Modifying
 	@Query("update Cart c set c.cartProductStatus = ?2 where c.userId = ?1")
 	void updateCartProductStatusbyUserId(Long userId, CartProductStatus status);
+
+	@Modifying
+	@Query("update Cart c set c.cartProductStatus = ?3 where c.userId = ?1 and c.productId = ?2")
+	void updateStatusByProductIdAnduserId(Long userId, Integer productId, CartProductStatus status);
 }
